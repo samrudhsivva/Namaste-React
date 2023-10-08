@@ -1,48 +1,54 @@
 import React from "react";
-import ReactDOM, { render } from "react-dom/client";
+import ReactDOM from "react-dom/client";
 
-// React Element => JS Object ==(render)==> HTML Tag
-
-const heading = React.createElement(
-  "h1",
-  { id: "heading" }, // Creating a React Element using Core React
-  "Namaste React 🚀"
+const myLuckyuNumber = 777;
+const nestedHeaderElement = React.createElement("div", { className: "title" }, [
+  React.createElement("h1", null, "I am H1"),
+  React.createElement("h2", null, "I am H2"),
+  ,
+  React.createElement("h3", null, "I am H3"),
+]);
+const NestedHeaderElementComponent = () => (
+  <div className="title">
+    <h1>i am H1</h1>
+    <h2>i am H2</h2>
+    <h3>i am H3</h3>
+    <span>Rendering NestedHeaderElementComponent2 here</span>
+    <NestedHeaderElementComponent2 />
+    <NestedHeaderElementComponent2></NestedHeaderElementComponent2>
+    {myLuckyuNumber}
+  </div>
+);
+const NestedHeaderElementComponent2 = () => (
+  <div className="title">
+    <h1>i am H1</h1>
+    <h2>i am H2</h2>
+    <h3>i am H3</h3>
+  </div>
+);
+const nestedHeaderElementJSX = (
+  <div className="title">
+    <h1 id="heading">i am H1</h1>
+    <h2>i am H1</h2>
+    <h3>i am H1</h3>
+    <NestedHeaderElementComponent />
+  </div>
 );
 
-const JSXheading = <h1 className="title">Namaste React using JSX 🚀</h1>; // Creating a React Element using JSX
-
-// JSX ===(Babel)===> React Element - JS Object ===(render)===> HTML tag
-
-const Title = () => <h2 className="title">Title goes here ...</h2>;
-
-const HeadingComponent = () => {
-  return (
-    <div className="container">
-      <h1 className="title">Title render</h1>
-      <Title />
-      <Title></Title>
-      {Title()}
-      <Component_1 />
+const HeaderComponent = () => (
+  <div className="container">
+    <img className="logo" src="https://namastedev.com/images/reel.png" />
+    <div>
+      <input className="search-box" type="text"></input>
+      <button>search</button>
     </div>
-  );
-};
-const myLuckyNumber = 777;
 
-const Component_1 = function () {
-  return (
-    <>
-      {Component_2}
-      <i>myLuckyNumber is {myLuckyNumber}</i>
-      <h2>I am component 1</h2>
-    </>
-  );
-};
-const Component_2 = (
-  <>
-    <h3>I am component 2</h3>
-  </>
+    <img 
+      className="user-icon"
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ78ua_0Z0w9iIe1jt11k3PsoD0CsvML6B6Q&usqp=CAU"
+    />
+  </div>
 );
-console.log(JSXheading);
-const myRoot = document.getElementById("root");
-const root = ReactDOM.createRoot(myRoot);
-root.render(<HeadingComponent />);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<HeaderComponent />);

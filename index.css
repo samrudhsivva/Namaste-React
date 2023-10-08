@@ -6,5 +6,23 @@
 }
 
 .container {
+  display: flex;
   background-color: beige;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.logo {
+  height: 100px;
+  width: 150px;
+}
+.search-box{
+  
+  height: 20px;
+}
+
+.user-icon
+{
+  height: 50px;
+  width: 50px;
 }
