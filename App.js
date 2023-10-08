@@ -1,19 +1,48 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
-const heading = React.createElement("h1", { id: "heading" }, "hey from React");
-console.log(heading);
-const domRoot = document.getElementById("root-react");
-const root = ReactDOM.createRoot(domRoot);
+import ReactDOM, { render } from "react-dom/client";
 
-const parentElement = React.createElement("div", { id: "parent" }, [
-  React.createElement("div", { id: "child1", key: "0" }, [
-    React.createElement("h1", { id: "h1", key: "0" }, "I am H1 TAG"),
-    React.createElement("h2", { id: "h2", key: "1" }, "I am H2 TAG"),
-  ]),
-  React.createElement("div", { id: "child2", key: "1" }, [
-    React.createElement("h1", { id: "h1", key: "0" }, "I am H1 TAG"),
-    React.createElement("h2", { id: "h2", key: "1" }, "I am H2 TAG"),
-  ]),
-]);
+// React Element => JS Object ==(render)==> HTML Tag
 
-root.render(parentElement);
+const heading = React.createElement(
+  "h1",
+  { id: "heading" }, // Creating a React Element using Core React
+  "Namaste React 🚀"
+);
+
+const JSXheading = <h1 className="title">Namaste React using JSX 🚀</h1>; // Creating a React Element using JSX
+
+// JSX ===(Babel)===> React Element - JS Object ===(render)===> HTML tag
+
+const Title = () => <h2 className="title">Title goes here ...</h2>;
+
+const HeadingComponent = () => {
+  return (
+    <div className="container">
+      <h1 className="title">Title render</h1>
+      <Title />
+      <Title></Title>
+      {Title()}
+      <Component_1 />
+    </div>
+  );
+};
+const myLuckyNumber = 777;
+
+const Component_1 = function () {
+  return (
+    <>
+      {Component_2}
+      <i>myLuckyNumber is {myLuckyNumber}</i>
+      <h2>I am component 1</h2>
+    </>
+  );
+};
+const Component_2 = (
+  <>
+    <h3>I am component 2</h3>
+  </>
+);
+console.log(JSXheading);
+const myRoot = document.getElementById("root");
+const root = ReactDOM.createRoot(myRoot);
+root.render(<HeadingComponent />);

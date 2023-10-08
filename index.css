@@ -1,3 +1,10 @@
 #heading {
-  color: greenyellow;
+  color: orange;
+}
+.title {
+  color: crimson;
+}
+
+.container {
+  background-color: beige;
 }
