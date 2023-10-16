@@ -26,3 +26,20 @@ This folder contains all the coding assignments done from namaste react course
 
 - npx parcel -D index.html
 - npx parcel build index.html
+
+# Mock UI structure
+
+- Header
+ - Logo
+ - Nav Items
+
+- Body
+ - Search
+ - Restaurant Container
+ - Restaurant Card
+
+- Footer
+ - Copyright
+ - Links
+ - Contact
+ - Address
