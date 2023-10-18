@@ -52,9 +52,10 @@
   flex-direction: column;
   align-items: center;
 }
-.search-bar {
-  margin-top: 20px;
-  height: 20px;
+.searched-container {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: lightcoral;
 }
 
 .res-card-image {
@@ -69,12 +70,40 @@
   margin: 5px;
   /* border-radius: 5%; */
 }
-.res-card  :hover
-{
+.res-card :hover {
   cursor: pointer;
 }
 
 .res-container {
   display: flex;
   flex-wrap: wrap;
+}
+
+.shimmer-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.shimmer-card {
+  height: 400px;
+  width: 200px;
+  background-color: rgb(239, 238, 238);
+  margin: 20px;
+}
+
+.Login {
+  height: 30px;
+  padding: 10px 10px;
+  margin: 20px;
+}
+.filter {
+  display: flex;
+  margin: 20px;
+}
+
+.search {
+  margin: 10px;
+}
+.topRated {
+  margin: 10px;
 }

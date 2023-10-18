@@ -1,9 +1,12 @@
 import { useState } from "react";
 
-const SearchBar = () => {
+const SearchBar = (props) => {
   let [searchValue, setSearchValue] = useState();
   const searchHandler = () => {
-    console.log("you searched for", searchValue);
+    const searchedRestaurants1 = props.restaurants.filter((res) =>
+      res?.info?.name.includes(props.searchText)
+    );
+    props.setSearchedRestaurants(searchedRestaurants1);
   };
   return (
     <div className="search-bar">
@@ -12,7 +15,7 @@ const SearchBar = () => {
         onChange={(e) => setSearchValue(e.target.value)}
         placeholder="Eg: Samosa, Pizza, Ice-cream"
       />
-      <button onClick={searchHandler}>search</button>
+      <button className="search-button" onClick={searchHandler()}></button>
     </div>
   );
 };
