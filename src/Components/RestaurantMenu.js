@@ -31,7 +31,7 @@ const RestaurantMenu = () => {
     <Shimmer />
   ) : (
     <div className="res-menu">
-      <img src={basePath + cloudinaryImageId} />
+      <img className="res-menu-image" src={basePath + cloudinaryImageId} />
       <h1> {name}</h1>
       <p> {city}</p>
       <h3> {cuisines.join(", ")}</h3>

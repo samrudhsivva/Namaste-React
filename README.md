@@ -30,16 +30,20 @@ This folder contains all the coding assignments done from namaste react course
 # Mock UI structure
 
 - Header
- - Logo
- - Nav Items
+- Logo
+- Nav Items
 
 - Body
- - Search
- - Restaurant Container
- - Restaurant Card
+- Search
+- Restaurant Container
+- Restaurant Card
 
 - Footer
- - Copyright
- - Links
- - Contact
- - Address
+- Copyright
+- Links
+- Contact
+- Address
+
+# Points to remember
+
+- Never update the state variables directly

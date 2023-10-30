@@ -15,7 +15,6 @@ const AppComponent = () => {
     <div id="app">
       <Header />
       <Outlet />
-      <Login/>
     </div>
   );
 };
@@ -25,11 +24,26 @@ const appRouter = createBrowserRouter([
     path: "/",
     element: <AppComponent />,
     children: [
-      { path: "/", element: <Body /> },
-      { path: "/Contact", element: <Contact /> },
-      { path: "/About", element: <About /> },
-      { path: "/Cart", element: <Cart /> },
-      { path: "/Restaurant/:resId", element: <RestaurantMenu /> },
+      {
+        path: "/",
+        element: <Body />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
+      {
+        path: "/restaurant/:resId",
+        element: <RestaurantMenu />,
+      },
     ],
     errorElement: <ErrorPage />,
   },
