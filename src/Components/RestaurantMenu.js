@@ -2,22 +2,10 @@ import { useState, useEffect } from "react";
 import { basePath } from "../../utils/urls";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
-import { menuApiUrl } from "../../utils/urls";
+import useRestaurantMenu from "../../utils/useRestaurantMenu";
 const RestaurantMenu = () => {
-  const [resData, setResData] = useState(null);
   const { resId } = useParams();
-  console.log("params are", resId);
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    const response = await fetch(menuApiUrl + resId);
-    const json = await response.json();
-    setResData(json.data);
-  };
-  console.log("data is", resData);
-  console.log("info data is", resData?.cards[0]?.card?.card?.info);
+  const resData = useRestaurantMenu(resId);
 
   const { name, city, cuisines, cloudinaryImageId } =
     resData?.cards[0]?.card?.card?.info || {};
@@ -40,8 +28,7 @@ const RestaurantMenu = () => {
         {itemCards.map((itemCard) => {
           return (
             <li key={itemCard.card.info.id}>
-              {itemCard.card.info.name} -{" "}
-              {"₹" + itemCard.card.info.price / 100 }
+              {itemCard.card.info.name} - {"₹" + itemCard.card.info.price / 100}
             </li>
           );
         })}
