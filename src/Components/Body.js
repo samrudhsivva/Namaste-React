@@ -1,19 +1,16 @@
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
-import SearchBar from "./SearchBar";
 import { swiggyAPI } from "../../utils/urls";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../../utils/useOnlineStatus";
+import useGetToprated from "../../utils/useGetToprated";
 const Body = () => {
   const [restaurants, setTopratedRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [searchedRestaurants, setSearchedRestaurants] = useState([]);
-  const getTopRated = (restaurantsData) => {
-    let topRatedRestaurants = restaurantsData.filter(
-      (restaurant) => restaurant?.info?.avgRating >= 4
-    );
-    setSearchedRestaurants(topRatedRestaurants);
-  };
+
+  const onlineStatus = useOnlineStatus();
 
   useEffect(() => {
     fetchData();
@@ -33,6 +30,12 @@ const Body = () => {
     );
   };
   console.log("res is", restaurants);
+
+  console.log("online status is", onlineStatus);
+  if (onlineStatus == false) {
+    return <h1>You are Offline !!! ❌</h1>;
+  }
+
   return restaurants.length === 0 ? (
     <Shimmer />
   ) : (
@@ -64,7 +67,9 @@ const Body = () => {
           </button>
         </div>
         <div className="topRated">
-          <button onClick={() => getTopRated(restaurants)}>
+          <button
+            onClick={() => useGetToprated(restaurants, setSearchedRestaurants)}
+          >
             Show Top Rated⭐🌟⭐
           </button>
         </div>

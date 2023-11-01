@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./src/Components/Header";
 import Body from "./src/Components/Body";
@@ -8,7 +8,16 @@ import About from "./src/Components/About";
 import ErrorPage from "./src/Components/Error";
 import Cart from "./src/Components/Cart";
 import RestaurantMenu from "./src/Components/RestaurantMenu";
-import Login from "./src/Components/Login";
+// import Grocery from "./src/Components/Grocery";
+
+//Chunking
+//Code Splitting
+//Dynamic Bundling
+//lazy loading
+//on demand loading
+//dynamic import
+
+const Grocery = lazy(() => import("./src/Components/Grocery"));
 
 const AppComponent = () => {
   return (
@@ -43,6 +52,14 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurant/:resId",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/grocery",
+        element: (
+          <Suspense fallback={<h5>Grocery Loading please wait</h5>}>
+            <Grocery />
+          </Suspense>
+        ),
       },
     ],
     errorElement: <ErrorPage />,
