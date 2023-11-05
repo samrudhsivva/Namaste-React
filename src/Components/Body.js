@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../../utils/useOnlineStatus";
 import useGetToprated from "../../utils/useGetToprated";
+import Example from "./Workwithus";
 const Body = () => {
   const [restaurants, setTopratedRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
@@ -40,34 +41,33 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      {console.log(restaurants, searchedRestaurants, searchText)}
-      <div className="filter">
-        <div className="search">
+      <div className="flex items-center filter">
+        <div className="search m-4 p-4">
           <input
             type="text"
-            className="search-bar"
+            className="border border-solid border-black"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
           ></input>
           <button
-            className="search-button"
+            className="search-button m-2 bg-green-100 px-3 py-1  rounded-lg"
             onClick={() => {
               const searchedRestaurants1 = restaurants.filter((res) =>
                 res?.info?.name
                   ?.toLowerCase()
                   .includes(searchText.toLowerCase())
               );
-              console.log(searchText);
               setSearchedRestaurants(searchedRestaurants1);
             }}
           >
             Search
           </button>
         </div>
-        <div className="topRated">
+        <div className="topRated ">
           <button
+            className="px-2 py-0.5 bg-gray-200 rounded-lg"
             onClick={() => useGetToprated(restaurants, setSearchedRestaurants)}
           >
             Show Top Rated⭐🌟⭐
@@ -75,14 +75,14 @@ const Body = () => {
         </div>
       </div>
 
-      <div className="res-container">
+      <div className="res-container flex flex-wrap">
         {searchedRestaurants.map((res) => (
           <Link key={res.info.id} to={"/restaurant/" + res.info.id}>
-            {" "}
             <RestaurantCard resData={res} />
           </Link>
         ))}
       </div>
+      <Example/>
     </div>
   );
 };
